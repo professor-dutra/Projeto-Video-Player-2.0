@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJETO VÍDEO 2.0</title>
+
+    <!-- ÍCONE DA ABA DO NAVEGADOR -->
+    <link rel="icon" href="favicon.ico">
+
+    <!-- ÍCONE PARA DISPOSITIVOS APPLE -->
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+
+    <!-- CONFIGURAÇÃO PWA -->
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main id="app">
+        <div class="video-container">
+            <!-- VÍDEO -->
+            <video class="video-player"></video>
+
+            <!-- BARRA DE CONTROLES -->
+            <div class="barra-controles">
+                <!-- Controles -->
+            <div class="controles">
+            
+                <!-- BLOCO 1 - PLAY / PAUSE -->
+                <div class="bloco-controle">
+                    <button id="btnPlayPause" title="Play / Pause">▶</button>
+                </div>
+            
+                <!-- BLOCO 2 - ANTERIOR / PRÓXIMO -->
+                <div class="bloco-controle">
+                    <button id="btnAnterior" title="Vídeo anterior">◀</button>
+                    <button id="btnProximo" title="Próximo vídeo">▶</button>
+                </div>
+            
+                <!-- BLOCO 3 - RECUAR / AVANÇAR -->
+                <div class="bloco-controle">
+                    <button id="btnRecuar" title="Recuar 10 segundos">⏪</button>
+                    <button id="btnAdiantar" title="Adiantar 10 segundos">⏩</button>
+                </div>
+            
+                <!-- BLOCO 4 - VOLUME -->
+                <div class="bloco-controle">
+                    <button id="btnVolume" title="Volume">🔊</button>
+                    <input
+                        type="range"
+                        id="controleVolume"
+                        min="0"
+                        max="1"
+                        step="0.01"
+                        value="0.2"
+                        title="Volume"
+                    >
+                </div>
+            
+                <!-- BLOCO 5 - BARRA DE ROLAGEM -->
+                <div class="bloco-controle bloco-progresso">
+                    <span id="tempoAtual">00:00</span>                
+                    <input
+                        type="range"
+                        id="barraProgresso"
+                        min="0"
+                        max="100"
+                        value="0"
+                    >                
+                    <span id="tempoTotal">00:00</span>
+                </div>
+            
+                <!-- BLOCO 6 - VELOCIDADE / FULLSCREEN -->
+                <div class="bloco-controle">
+
+                    <select id="controleVelocidade" title="Velocidade de reprodução">
+                        <option value="0.5">0,5x</option>
+                        <option value="0.75">0,75x</option>
+                        <option value="1" selected>1x</option>
+                        <option value="1.25">1,25x</option>
+                        <option value="1.5">1,5x</option>
+                        <option value="1.75">1,75x</option>
+                        <option value="2">2x</option>
+                    </select>                
+                    
+                    <button id="btnFullscreen" title="Tela cheia">⛶</button>
+                </div>        
+            </div>                    
+        </div>
+
+        <!-- TELA DE LOGIN -->
+        <section class="login">
+            <input 
+                type="text"
+                id="usuario"
+                placeholder="Usuário: admin"
+            >
+            <input 
+                type="password"
+                id="senha"
+                placeholder="Senha: admin"
+            >
+            <button id="btnLogin">
+                LOGAR
+            </button>
+        </section>
+        
+        <!-- CRONÔMETRO -->
+        <section class="bloqueio">
+            <h2 id="mensagemBloqueio"> SENHA PARA DESBLOQUEAR </h2>
+
+            <!--====================================
+                CRONÔMETRO
+            ====================================-->
+            <div class="cronometro__tempo" id="tempo"> 00 </div>
+            <input
+                type="password"
+                id="senhaDesbloqueio"
+                placeholder="Senha admin"
+            >
+            <button id="btnDesbloquear"> CANCELAR BLOQUEIO </button>
+        </section>
+         <!-- TELA DE BLOQUEIO -->
+
+    <!-- PLAYLIST -->
+    <section class="playlist">
+        <!-- CABEÇALHO DA PLAYLIST -->
+        <div class="playlist-cabecalho">
+            <h2>PLAYLIST 03/10 03:07</h2>
+            <button id="btnNovaPasta"> NOVA PASTA </button>
+        </div>
+
+        <!-- ÁREA DAS PASTAS -->
+        <div class="playlist-pastas">
+            <h3>PASTAS</h3>
+            <div id="listaPastas">
+                <!-- As pastas serão inseridas aqui -->
+            </div>
+        </div>
+
+        <!-- ÁREA DOS VÍDEOS -->
+        <div class="playlist-videos">
+            <div class="playlist-videos-cabecalho">
+                <h3 id="nomePastaSelecionada"> SELECIONE UMA PASTA </h3>
+                <button id="btnAdicionarVideos"> + ADICIONAR VÍDEOS </button>
+                <input
+                    type="file"
+                    id="seletorPasta"
+                    multiple
+                    accept="video/*"
+                    style="display: none;"
+                >
+            </div>
+            <div id="listaPlaylistVideos">
+                <!-- Os vídeos serão inseridos aqui -->
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
